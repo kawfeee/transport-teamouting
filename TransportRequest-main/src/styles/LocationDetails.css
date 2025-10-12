@@ -1,0 +1,145 @@
+/* Location Details Section with uniform field dimensions */
+.location-section {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.location-heading {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.location-grid {
+  display: flex;
+  justify-content: flex-start;
+  gap: 270px;
+  flex-wrap: wrap;
+}
+
+.location-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 410px;
+  height: 78px;
+}
+
+.field-label {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Dropdown Styles */
+.field-dropdown-container {
+  position: relative;
+}
+
+.field-dropdown-button {
+  width: 410px;
+  height: 48px;
+  padding: 8px 12px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  color: #6B7280;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #111827;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #F3F4F6;
+}
+
+/* Date Field Styles */
+.date-field-container {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+}
+
+.date-field-input {
+  width: 410px;
+  height: 48px;
+  padding: 8px 12px 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.date-field-calendar {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  pointer-events: none;
+}
+
+/* Venue Input Styles */
+.venue-input {
+  width: 410px;
+  height: 48px;
+  padding: 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  background: #FFFFFF;
+}
+
+.venue-input::placeholder {
+  color: #9CA3AF;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,210 @@
+/* Booking Details styles */
+.booking-details {
+  margin-top: 32px;
+  font-family: "Samsung InterFace", "Segoe UI", Arial, sans-serif;
+  /* width: 1400px; */
+}
+
+.booking-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.booking-container {
+  display: flex;
+  gap: 2px; /* reduced gap between left and right columns */
+  align-items: flex-start;
+  /* width: 1400px; */
+}
+
+.booking-left {
+  /* flex: 1 1 60%; */
+  width: 860px;
+}
+
+.booking-right {
+  /* width: 474px; */
+  /* padding-left: -10px; */
+  margin-left: 2px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 fields per row */
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.field label {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+/* .select-wrap select,
+.input-with-icon input {
+  width: 410px;
+  height: 48px;
+  padding: 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #111827;
+} Closing brace added here */
+
+.select-wrap select,
+.input-with-icon input {
+  width: 410px;
+  height: 46.72px; /* requested exact height */
+  padding: 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.input-with-icon {
+  position: relative;
+  width: 410px;
+}
+
+.form-row-with-actions .field-with-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-with-actions .image-actions {
+  margin-top: 40px;
+  margin-left: 157px;
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actions-row {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-calc {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  color: #2563EB;
+}
+
+.btn-send {
+  background: #0ea5d1;
+  border: none;
+  color: white;
+}
+
+/* Image button styles placed under Start Time field */
+.image-actions {
+  margin-top: 12px;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.img-btn {
+  width: 120px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.img-btn.primary {
+  background: #0ea5d1;
+  border: none;
+}
+
+.img-btn img {
+  width: 119px;
+  height: 38px;
+}
+
+/* Quote card */
+.quote-card {
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 12px;
+  background: #fff;
+  width: 474px;
+  height: 322px; /* requested exact height */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.quote-table {
+  border-top: 1px solid #E5E7EB;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-table .rows-wrapper {
+  overflow-y: auto;
+}
+
+.quote-table .row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 10px 12px;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 14px;
+  align-items: center;
+}
+
+.quote-table .row.header {
+  background: #F9FAFB;
+  font-weight: 600;
+}
+
+.quote-table .row.total {
+  background: #F9FAFB;
+  font-weight: 700;
+}
