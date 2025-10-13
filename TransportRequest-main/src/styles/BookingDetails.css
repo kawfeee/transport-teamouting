@@ -208,3 +208,251 @@
   background: #F9FAFB;
   font-weight: 700;
 }
+
+/* Contact Details - placed under actions-row and aligned to left-most side */
+.contact-details {
+  margin-top: 18px;
+  padding-left: 0; /* ensure left-most alignment within booking-left */
+}
+
+.contact-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-field label {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.contact-field input {
+  width: 410px; /* match other inputs in booking-left */
+  height: 46.72px;
+  padding: 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Attachment section styles */
+.attachment-section {
+  margin-top: 20px;
+  padding-left: 0; /* left-most alignment */
+}
+
+.attachment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.attachment-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.attachment-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.attachment-drop {
+  border: 1.5px dashed #C6C6C6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  width: 860px; /* align with booking-left width */
+  box-sizing: border-box;
+}
+
+.attachment-left,
+.attachment-right {
+  width: 50%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.attachment-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.attachment-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  border-left: 1px solid #ECEAEA; /* dividing line in the middle */
+}
+
+.upload-left .choose {
+  font-weight: 600;
+  color: #111827;
+}
+
+.upload-left .meta {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.attach-btn {
+  margin-left: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #38AEE0;
+  background: #fff;
+  color: #0ea5d1;
+  cursor: pointer;
+}
+
+.attached-file {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-label {
+  background: #FFFBF5;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.file-meta {
+  color: #6B7280;
+  font-size: 12px;
+}
+
+.download-btn {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Approval checkbox */
+.approval-row {
+  margin-top: 12px;
+  padding-left: 4px; /* align with left-most column */
+}
+
+.approval-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0b63b8;
+  font-weight: 500;
+}
+
+.approval-checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+/* Comment section */
+.comment-section {
+  width: 1435px;
+  margin-top: 16px;
+  padding-left: 4px; /* align with left-most column */
+}
+
+.comment-label {
+  display: block;
+  font-size: 13px;
+  color: #4b5563;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.comment-input {
+  width: calc(100% - 8px);
+  height: 96px;
+  padding: 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #111827;
+}
+
+.comment-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn.cancel {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  color: #111827;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.submit {
+  background: #0ea5d1;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* View Policies (left-most under comment) */
+.view-policies {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 4px; /* align with left-most column */
+}
+
+.view-policies-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+}
+
+.view-policies-btn {
+  background: transparent;
+  border: none;
+  color: #2563EB;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+}

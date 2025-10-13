@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../styles/BookingDetails.css';
 import calcIcon from '../assets/calculator.svg';
 import sendIcon from '../assets/sendQuote.svg';
+import attachmentIcon from '../assets/attachment.svg';
+import poliIcon from '../assets/poli.svg';
 
 const BookingDetails = () => {
   const [numberOfVehicles, setNumberOfVehicles] = useState('2');
@@ -10,6 +12,9 @@ const BookingDetails = () => {
   const [distance, setDistance] = useState('25 KM');
   const [endTime, setEndTime] = useState('12:00 PM');
   const [startTime, setStartTime] = useState('12:00 PM');
+  const [extensionNo, setExtensionNo] = useState('2-03-719');
+  const [mobileNo, setMobileNo] = useState('+91 7550142047');
+  const [comment, setComment] = useState('');
 
   return (
     <div className="booking-details">
@@ -84,6 +89,75 @@ const BookingDetails = () => {
                 </button>
               </div>
             </div>
+          </div>
+          {/* Contact Details section - placed immediately under actions-row and aligned to the left-most side */}
+          <div className="contact-details">
+            <div className="contact-header">Contact Details</div>
+            <div className="contact-row">
+              <div className="contact-field">
+                <label>Extension No <span className="required">*</span></label>
+                <input value={extensionNo} onChange={e => setExtensionNo(e.target.value)} />
+              </div>
+
+              <div className="contact-field">
+                <label>Mobile No <span className="required">*</span></label>
+                <input value={mobileNo} onChange={e => setMobileNo(e.target.value)} />
+              </div>
+            </div>
+          </div>
+          {/* Attachment section placed below Contact Details */}
+          <div className="attachment-section">
+            <div className="attachment-header">
+              <img src={attachmentIcon} alt="Attachment" className="attachment-icon" />
+              <div className="attachment-title">Attachment</div>
+            </div>
+
+            <div className="attachment-drop">
+              <div className="attachment-left">
+                <div className="upload-left">
+                  <div className="choose">Choose a File</div>
+                  <div className="meta">PDF format • Max. 3MB</div>
+                </div>
+                <button className="attach-btn">Attach</button>
+              </div>
+
+              <div className="attachment-right">
+                <div className="attached-file">
+                  <div className="file-label">Quote details.pdf</div>
+                  <div className="file-meta">11 Sep, 2023 • 13MB</div>
+                  <button className="download-btn">⬇︎</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Approval checkbox below attachment */}
+          <div className="approval-row">
+            <label className="approval-label">
+              <input type="checkbox" className="approval-checkbox" />
+              <span>I Confirm My Single Approval</span>
+            </label>
+          </div>
+
+          {/* Comment area with Cancel and Submit buttons */}
+          <div className="comment-section">
+            <label className="comment-label">Comment (Max 500 Chars)</label>
+            <textarea
+              className="comment-input"
+              value={comment}
+              maxLength={500}
+              onChange={e => setComment(e.target.value)}
+              placeholder=""
+            />
+
+            <div className="comment-actions">
+              <button className="btn cancel" onClick={() => setComment('')}>Cancel</button>
+              <button className="btn submit" onClick={() => { /* submit handler */ alert('Submitted: ' + comment); }}>Submit</button>
+            </div>
+          </div>
+          {/* View Policies link/button aligned left-most below comment */}
+          <div className="view-policies">
+            <img src={poliIcon} alt="policies" className="view-policies-icon" />
+            <button className="view-policies-btn">View Policies</button>
           </div>
         </div>
 
