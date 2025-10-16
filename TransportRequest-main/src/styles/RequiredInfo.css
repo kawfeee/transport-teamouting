@@ -139,9 +139,9 @@
 }
 
 .cab-type-heading {
-  color: #111827;
-  font-size: 14px;
-  font-weight: 600;
+  color: #202224;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 20px;
 }
 
@@ -178,17 +178,18 @@
 }
 
 .project-details-heading {
-  color: #111827;
-  font-size: 14px;
-  font-weight: 600;
+  color: #101928;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 20px;
   margin-bottom: 4px;
 }
 
 .project-label {
-  color: #4b5563;
+  color: #202224;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 7px;
 }
 
 .project-select {
@@ -196,11 +197,12 @@
   height: 48px;
   background: #fff;
   border: 1px solid #e6e6e6;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.01);
+  /* box-shadow: 0 0 0 1px rgba(0,0,0,0.01); */
   border-radius: 6px;
   padding: 10px 14px;
-  color: #111827;
-  font-size: 13px;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: space-between;

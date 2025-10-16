@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import '../styles/BookingDetails.css';
+import UploadComponent from './UploadComponent';
 import calcIcon from '../assets/calculator.svg';
 import sendIcon from '../assets/sendQuote.svg';
 import attachmentIcon from '../assets/attachment.svg';
 import poliIcon from '../assets/poli.svg';
+import clockIcon from '../assets/clock.svg';
+import speedIcon from '../assets/speed.svg';
+import arrowDown from '../assets/arrow-down.svg';
+import uploadIcon from '../assets/upload.svg';
+import cancelIcon from '../assets/cancel.svg';
+import submitIcon from '../assets/submit.svg';
+import infoIcon from '../assets/info.svg';
 
 const BookingDetails = () => {
   const [numberOfVehicles, setNumberOfVehicles] = useState('2');
@@ -26,32 +34,35 @@ const BookingDetails = () => {
             <div className="field">
               <label>Number of Vehicle</label>
               <div className="select-wrap">
-                <select value={numberOfVehicles} onChange={e => setNumberOfVehicles(e.target.value)}>
+                <select value={numberOfVehicles} onChange={e => setNumberOfVehicles(e.target.value)} className="custom-select">
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                 </select>
+                <img src={arrowDown} alt="arrow" className="select-arrow" />
               </div>
             </div>
 
             <div className="field">
               <label>Seating Capacity</label>
               <div className="select-wrap">
-                <select value={seatingCapacity} onChange={e => setSeatingCapacity(e.target.value)}>
+                <select value={seatingCapacity} onChange={e => setSeatingCapacity(e.target.value)} className="custom-select">
                   <option>25</option>
                   <option>30</option>
                   <option>40</option>
                 </select>
+                <img src={arrowDown} alt="arrow" className="select-arrow" />
               </div>
             </div>
 
             <div className="field">
               <label>Vehicle Type</label>
               <div className="select-wrap">
-                <select value={vehicleType} onChange={e => setVehicleType(e.target.value)}>
+                <select value={vehicleType} onChange={e => setVehicleType(e.target.value)} className="custom-select">
                   <option>AC</option>
                   <option>Non-AC</option>
                 </select>
+                <img src={arrowDown} alt="arrow" className="select-arrow" />
               </div>
             </div>
 
@@ -59,7 +70,9 @@ const BookingDetails = () => {
               <label>One way Distance from Office to Venue</label>
               <div className="input-with-icon">
                 <input value={distance} onChange={e => setDistance(e.target.value)} />
-                <button className="icon-btn">📍</button>
+                <button className="icon-btn">
+                  <img src={speedIcon} alt="speed" className="distance-icon" />
+                </button>
               </div>
             </div>
           </div>
@@ -69,7 +82,9 @@ const BookingDetails = () => {
               <label>End Time at Office</label>
               <div className="input-with-icon">
                 <input value={endTime} onChange={e => setEndTime(e.target.value)} />
-                <button className="icon-btn">⏱️</button>
+                <button className="icon-btn">
+                  <img src={clockIcon} alt="clock" className="time-icon" />
+                </button>
               </div>
             </div>
 
@@ -77,7 +92,9 @@ const BookingDetails = () => {
               <label>Start Time from Office</label>
               <div className="input-with-icon">
                 <input value={startTime} onChange={e => setStartTime(e.target.value)} />
-                <button className="icon-btn">⏱️</button>
+                <button className="icon-btn">
+                  <img src={clockIcon} alt="clock" className="time-icon" />
+                </button>
               </div>
 
               <div className="actions-row image-actions">
@@ -112,24 +129,15 @@ const BookingDetails = () => {
               <div className="attachment-title">Attachment</div>
             </div>
 
-            <div className="attachment-drop">
-              <div className="attachment-left">
-                <div className="upload-left">
-                  <div className="choose">Choose a File</div>
-                  <div className="meta">PDF format • Max. 3MB</div>
-                </div>
-                <button className="attach-btn">Attach</button>
-              </div>
+            <UploadComponent 
+              fileName="Departure flight ticket.pdf"
+              fileMeta="11 Sep, 2023 • 12:24pm • 13MB"
+              onFileSelect={() => { /* file select handler */ }}
+              onFileDelete={() => { /* file delete handler */ }}
+            />
 
-              <div className="attachment-right">
-                <div className="attached-file">
-                  <div className="file-label">Quote details.pdf</div>
-                  <div className="file-meta">11 Sep, 2023 • 13MB</div>
-                  <button className="download-btn">⬇︎</button>
-                </div>
-              </div>
-            </div>
           </div>
+          
           {/* Approval checkbox below attachment */}
           <div className="approval-row">
             <label className="approval-label">
@@ -146,12 +154,16 @@ const BookingDetails = () => {
               value={comment}
               maxLength={500}
               onChange={e => setComment(e.target.value)}
-              placeholder=""
+              placeholder="xxx-xx-xxx-xx-xxx"
             />
 
             <div className="comment-actions">
-              <button className="btn cancel" onClick={() => setComment('')}>Cancel</button>
-              <button className="btn submit" onClick={() => { /* submit handler */ alert('Submitted: ' + comment); }}>Submit</button>
+              <div className="btn cancel" onClick={() => setComment('')}>
+                <img src={cancelIcon} alt="Cancel" className="btn-icon" />
+              </div>
+              <div className="btn submit" onClick={() => { /* submit handler */ alert('Submitted: ' + comment); }}>
+                <img src={submitIcon} alt="Submit" className="btn-icon" />
+              </div>
             </div>
           </div>
           {/* View Policies link/button aligned left-most below comment */}
@@ -163,18 +175,55 @@ const BookingDetails = () => {
 
         <div className="booking-right">
           <div className="quote-card">
-            <div className="quote-header">Quote Details <span className="info">i</span></div>
-            <div className="quote-table">
-              <div className="row header"><div>Slab Cost</div><div>Rate</div><div>Usage</div><div>Total</div></div>
-              <div className="rows-wrapper">
-                <div className="row"><div>Kms</div><div>16200.00</div><div>2</div><div>32400</div></div>
-                <div className="row"><div>Extra Kms (As per actual)</div><div>50.00</div><div>380*2</div><div>38000</div></div>
-                <div className="row"><div>Driver Night Bata (After 10PM)</div><div>800</div><div>0</div><div>0</div></div>
-                <div className="row"><div>Rate for 120 kms + 380*2 Extra Kms + Driver Night Bata</div><div>70400</div><div></div><div></div></div>
-                <div className="row"><div>Toll, Parking, Tax Extra (As per actual)</div><div>0</div><div></div><div></div></div>
-                <div className="row total"><div>Total</div><div></div><div></div><div>70400</div></div>
-              </div>
-            </div>
+            <div className="quote-header">Quote Details <img src={infoIcon} alt="info" className="info-icon" /></div>
+            <table className="quote-table">
+              <thead>
+                <tr>
+                  <th className='slab-cost'>Slab Cost</th>
+                  <th>Rate</th>
+                  <th>Usage</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Kms</td>
+                  <td>16200.00</td>
+                  <td>2</td>
+                  <td>32400</td>
+                </tr>
+                <tr>
+                  <td>Extra Kms (As per actual)</td>
+                  <td>50.00</td>
+                  <td>380*2</td>
+                  <td>38000</td>
+                </tr>
+                <tr>
+                  <td>Driver Night Bata (After 10PM)</td>
+                  <td>800</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Rate for 120 kms + 380*2 Extra Kms + Driver Night Bata</td>
+                  <td></td>
+                  <td></td>
+                  <td>70400</td>
+                </tr>
+                <tr>
+                  <td>Toll, Parking, Tax Extra (As per actual)</td>
+                  <td></td>
+                  <td></td>
+                  <td>0</td>
+                </tr>
+                <tr className="total-row">
+                  <td>Total</td>
+                  <td></td>
+                  <td></td>
+                  <td>70400</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles/LocationDetails.css';
 import arrowDown from '../assets/arrow-down.svg';
+import calendarIcon from '../assets/calendar.svg';
+import checkIcon from '../assets/check.svg';
+import uncheckIcon from '../assets/uncheck.svg';
 
 const TransportTypeSelector = () => {
   const [reportingBuilding, setReportingBuilding] = useState('Phoenix');
@@ -18,6 +21,12 @@ const TransportTypeSelector = () => {
     'Project D'
   ];
 
+  const [selectedCabType, setSelectedCabType] = useState('teamOuting');
+
+  const handleCabTypeChange = (type) => {
+    setSelectedCabType(type);
+  };
+
   return (
     <div className="transport-type-container">
       {/* Cab Type Section */}
@@ -25,12 +34,28 @@ const TransportTypeSelector = () => {
         <div className="cab-type-heading">Cab Type</div>
         <div className="radio-group" role="radiogroup" aria-label="Cab Type">
           <label className="radio-label">
-            <input type="radio" name="cabType" defaultChecked className="radio-input" />
-            <span className="radio-text">Team Outing</span>
+            <input 
+              type="radio" 
+              name="cabType" 
+              checked={selectedCabType === 'teamOuting'} 
+              onChange={() => handleCabTypeChange('teamOuting')} 
+              className="radio-input" 
+            />
+            <img src={checkIcon} alt="" className="radio-icon checked" />
+            <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
+            <span className={`radio-text ${selectedCabType === 'teamOuting' ? 'checked' : ''}`}>Team Outing</span>
           </label>
           <label className="radio-label">
-            <input type="radio" name="cabType" className="radio-input" />
-            <span className="radio-text">Team Lunch</span>
+            <input 
+              type="radio" 
+              name="cabType" 
+              checked={selectedCabType === 'teamLunch'} 
+              onChange={() => handleCabTypeChange('teamLunch')} 
+              className="radio-input" 
+            />
+            <img src={checkIcon} alt="" className="radio-icon checked" />
+            <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
+            <span className={`radio-text ${selectedCabType === 'teamLunch' ? 'checked' : ''}`}>Team Lunch</span>
           </label>
         </div>
       </div>
@@ -82,7 +107,7 @@ const TransportTypeSelector = () => {
                 type="button"
               >
                 {reportingBuilding}
-                <span className="dropdown-arrow">▾</span>
+                <img src={arrowDown} alt="arrow" className="dropdown-arrow" />
               </button>
               {buildingDropdownOpen && (
                 <div className="dropdown-menu">
@@ -106,23 +131,34 @@ const TransportTypeSelector = () => {
           {/* Required Date Field */}
           <div className="location-field">
             <label className="field-label">Required Date</label>
-            <div className="date-field-container">
-              <input
-                type="text"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="date-field-input"
-                placeholder="DD-MMM-YYYY"
-              />
-              <span className="date-field-calendar">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <rect x="2" y="3" width="12" height="10" stroke="#6B7280" strokeWidth="1.5"/>
-                  <path d="M2 6H14" stroke="#6B7280" strokeWidth="1.5"/>
-                  <path d="M5 2V4" stroke="#6B7280" strokeWidth="1.5"/>
-                  <path d="M11 2V4" stroke="#6B7280" strokeWidth="1.5"/>
-                </svg>
-              </span>
-            </div>
+              <div className="date-field-container">
+                {/* hidden native date input to open browser date picker */}
+                <input
+                  ref={(el) => { /* placeholder for ref set in effect below if needed */ }}
+                  type="date"
+                  onChange={(e) => {
+                    if (!e.target.value) return;
+                    const selectedDate = new Date(e.target.value);
+                    const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: 'short',
+                      year: 'numeric'
+                    }).replace(/ /g, '-');
+                    setDate(formattedDate);
+                  }}
+                  className="date-field-input-hidden"
+                  aria-label="Select date"
+                />
+
+                <div className="date-field-display" onClick={(ev) => {
+                  // when user clicks the display or calendar icon, trigger the native date input click
+                  const native = ev.currentTarget.parentNode.querySelector('.date-field-input-hidden');
+                  if (native) native.showPicker ? native.showPicker() : native.click();
+                }}>
+                  <span className="date-field-text">{date}</span>
+                  <img src={calendarIcon} alt="calendar" className="date-field-calendar" />
+                </div>
+              </div>
           </div>
 
           {/* Venue/Resort Details Field */}

@@ -1,1 +1,0 @@
-- [ ] Increase width of date-input and related fields in LocationDetails.css from 410px to 500px

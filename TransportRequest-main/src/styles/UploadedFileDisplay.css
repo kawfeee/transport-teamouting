@@ -1,0 +1,35 @@
+.uploaded-file-display-wrapper {
+  position: relative;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.only-pdf-base {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.file-text-overlay {
+  position: absolute;
+  left: 75px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file-name-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 20px;
+}
+
+.file-meta-text {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 16px;
+}
