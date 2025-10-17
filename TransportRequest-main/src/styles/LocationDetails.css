@@ -45,11 +45,13 @@
 .radio-text {
   color: #6E6E6E;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .radio-text.checked,
 .radio-input:checked ~ .radio-text {
   color: #202224;
+  font-weight: 700;
 }
 
 
@@ -248,4 +250,20 @@
   width: 18px;
   height: 18px;
   pointer-events: none;
+}
+
+/* Page 2 and Page 3 specific styles - gray background for inputs */
+.page-2-container .field-dropdown-button,
+.page-3-container .field-dropdown-button {
+  background: #F3F3F3;
+}
+
+.page-2-container .venue-input,
+.page-3-container .venue-input {
+  background: #F3F3F3;
+}
+
+.page-2-container .date-field-display,
+.page-3-container .date-field-display {
+  background: #F3F3F3;
 }

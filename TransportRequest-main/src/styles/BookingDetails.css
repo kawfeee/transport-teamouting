@@ -109,18 +109,6 @@
   height: 20px;
 }
 
-/* .select-wrap select,
-.input-with-icon input {
-  width: 410px;
-  height: 48px;
-  padding: 8px 12px;
-  border: 1px solid #E5E7EB;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 14px;
-  color: #111827;
-} Closing brace added here */
-
 .select-wrap select,
 .input-with-icon input {
   width: 410px;
@@ -284,7 +272,7 @@
   border-radius: 8px;
   padding: 16px;
   background: #FFFFFF;
-  width: 474px;
+  width: 525px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -300,6 +288,7 @@
   line-height: 24px;
   color: #101928;
   margin-bottom: 16px;
+  position: relative;
 }
 
 .info-icon {
@@ -314,6 +303,115 @@
   font-size: 12px;
   font-weight: 600;
   font-style: normal;
+  cursor: pointer;
+}
+
+.info-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 9998;
+}
+
+.info-popup-container {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 450px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  padding: 16px 20px;
+  font-family: "Samsung InterFace", "Segoe UI", Arial, sans-serif;
+}
+
+/* Triangular pointer (beak) pointing to the info icon */
+.info-popup-container::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 109px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #E5E7EB;
+  z-index: 10000;
+}
+
+.info-popup-container::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 111px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #FFFFFF;
+  z-index: 10001;
+}
+
+.info-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.info-popup-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.info-popup-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.info-popup-close-btn:hover {
+  opacity: 0.7;
+}
+
+.info-popup-content {
+  padding: 0;
+}
+
+.info-popup-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.info-popup-list li {
+  font-size: 14px;
+  font-weight: 400;
+  color: #007AFF;
+  line-height: 1.5;
+  margin-bottom: 0;
+  position: relative;
+  padding-left: 8px;
+}
+
+.info-popup-list li::before {
+  content: '•';
+  position: absolute;
+  left: -12px;
+  color: #007AFF;
+  font-size: 16px;
 }
 
 .quote-table {
@@ -330,24 +428,32 @@
 
 .quote-table thead tr {
   border-bottom: 1px solid #E4E7EC;
+  height: 40px;
 }
 
 .quote-table th {
-  padding: 12px 16px;
+  padding: 10px 16px;
   text-align: left;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
   color: #344054;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .quote-table th.slab-cost {
   padding-left: 16px;
-  width: 45%;
+  width: 55%;
 }
 
 .quote-table tbody tr {
   border-bottom: 1px solid #E4E7EC;
+  height: 40px;
+}
+
+.quote-table tbody tr:nth-child(even):not(.total-row) {
+  background: #F8F8F8;
 }
 
 .quote-table tbody tr:last-child {
@@ -355,20 +461,23 @@
 }
 
 .quote-table td {
-  padding: 12px 16px;
+  padding: 10px 16px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #344054;
+  color: #676767;
   white-space: nowrap;
   overflow: visible;
   position: relative;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .quote-table td:first-child {
   overflow: visible;
   text-overflow: clip;
-  width: 45%;
+  width: 55%;
+  font-weight: 700;
 }
 
 .quote-table tbody tr.total-row {
@@ -377,7 +486,7 @@
 
 .quote-table tbody tr.total-row td {
   font-weight: 700;
-  color: #101928;
+  color: #676767;
 }
 
 /* Contact Details - placed under actions-row and aligned to left-most side */
@@ -494,6 +603,10 @@
   font-weight: 400;
   color: #374151;
   line-height: 20px;
+}
+
+.radio-input:checked ~ .radio-text {
+  font-weight: 700;
 }
 
 /* Attachment section styles */
@@ -627,7 +740,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #cfcfcf;
+  background: #e8e8e8;
   flex-shrink: 0;
 }
 
@@ -676,7 +789,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #9CA3AF;
+  color: #000000;
 }
 
 .comment-actions {
@@ -836,7 +949,10 @@
 }
 
 .transfer-comment-textarea::placeholder {
-  color: #9CA3AF;
+  color: #000000;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Transfer WF Button */
@@ -870,4 +986,28 @@
 .transfer-btn-icon {
   width: 20px;
   height: 20px;
+}
+
+/* Page 2 and Page 3 specific styles - gray background for inputs */
+.page-2-container .custom-select,
+.page-3-container .custom-select {
+  background: #F3F3F3;
+}
+
+.page-2-container .select-wrap select,
+.page-2-container .input-with-icon input,
+.page-3-container .select-wrap select,
+.page-3-container .input-with-icon input {
+  background: #F3F3F3;
+}
+
+.page-2-container .contact-field input,
+.page-3-container .contact-field input {
+  background: #F3F3F3;
+}
+
+/* Hide image-actions on page 2 and page 3 while preserving spacing */
+.page-2-container .image-actions,
+.page-3-container .image-actions {
+  visibility: hidden;
 }

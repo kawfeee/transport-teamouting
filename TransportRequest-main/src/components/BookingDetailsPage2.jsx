@@ -11,8 +11,9 @@ import arrowDown from '../assets/arrow-down.svg';
 import cancelIcon from '../assets/cancel.svg';
 import submitIcon from '../assets/submit.svg';
 import infoIcon from '../assets/info.svg';
+import CloseIcon from '../assets/close.svg';
 import transferIcon from '../assets/transfer.svg';
-import checkIcon from '../assets/check.svg';
+import checkGrayIcon from '../assets/check-gray.svg';
 import uncheckIcon from '../assets/uncheck.svg';
 import downloadIcon from '../assets/download.svg';
 import grayTick from '../assets/gray-tick.svg';
@@ -20,6 +21,7 @@ import transWfButton from '../assets/trans-wf.svg';
 import poliIcon from '../assets/poli.svg';
 
 const BookingDetailsPage2 = () => {
+  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [numberOfVehicles, setNumberOfVehicles] = useState('2');
   const [seatingCapacity, setSeatingCapacity] = useState('25');
   const [vehicleType, setVehicleType] = useState('AC');
@@ -192,7 +194,7 @@ const BookingDetailsPage2 = () => {
                   onChange={(e) => setRequestType(e.target.value)}
                   className="radio-input"
                 />
-                <img src={checkIcon} alt="" className="radio-icon checked" />
+                <img src={checkGrayIcon} alt="" className="radio-icon checked" />
                 <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
                 <span className="radio-text">Transfer Workflow</span>
               </label>
@@ -205,7 +207,7 @@ const BookingDetailsPage2 = () => {
                   onChange={(e) => setRequestType(e.target.value)}
                   className="radio-input"
                 />
-                <img src={checkIcon} alt="" className="radio-icon checked" />
+                <img src={checkGrayIcon} alt="" className="radio-icon checked" />
                 <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
                 <span className="radio-text">Review and send back to Me (No Data Modification)</span>
               </label>
@@ -253,7 +255,37 @@ const BookingDetailsPage2 = () => {
 
         <div className="booking-right">
           <div className="quote-card">
-            <div className="quote-header">Quote Details <img src={infoIcon} alt="info" className="info-icon" /></div>
+            <div className="quote-header">
+              Quote Details 
+              <img 
+                src={infoIcon} 
+                alt="info" 
+                className="info-icon" 
+                onClick={() => setIsInfoPopupOpen(true)}
+              />
+              
+              {/* Info Popup */}
+              {isInfoPopupOpen && (
+                <>
+                  <div className="info-popup-overlay" onClick={() => setIsInfoPopupOpen(false)}></div>
+                  <div className="info-popup-container">
+                    <div className="info-popup-header">
+                      <h4 className="info-popup-title">Note:</h4>
+                      <button className="info-popup-close-btn" onClick={() => setIsInfoPopupOpen(false)}>
+                        <img src={CloseIcon} alt="close" width={20} height={20} />
+                      </button>
+                    </div>
+                    <div className="info-popup-content">
+                      <ul className="info-popup-list">
+                        <li>
+                          No show cost of 8/80 kms- as min billing will be applied, Toll, Parking and GST will be added based on the actual usage
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
             <table className="quote-table">
               <thead>
                 <tr>

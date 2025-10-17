@@ -3,9 +3,12 @@ import '../styles/LocationDetails.css';
 import arrowDown from '../assets/arrow-down.svg';
 import calendarIcon from '../assets/calendar.svg';
 import checkIcon from '../assets/check.svg';
+import checkGrayIcon from '../assets/check-gray.svg';
 import uncheckIcon from '../assets/uncheck.svg';
 
-const TransportTypeSelector = () => {
+const TransportTypeSelector = ({ pageNumber = 1 }) => {
+  // Use check.svg for page 1, check-gray.svg for pages 2 and 3
+  const selectedIcon = pageNumber === 1 ? checkIcon : checkGrayIcon;
   const [reportingBuilding, setReportingBuilding] = useState('Phoenix');
   const [date, setDate] = useState('15-Oct-2025');
   const [venue, setVenue] = useState('');
@@ -41,7 +44,7 @@ const TransportTypeSelector = () => {
               onChange={() => handleCabTypeChange('teamOuting')} 
               className="radio-input" 
             />
-            <img src={checkIcon} alt="" className="radio-icon checked" />
+            <img src={selectedIcon} alt="" className="radio-icon checked" />
             <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
             <span className={`radio-text ${selectedCabType === 'teamOuting' ? 'checked' : ''}`}>Team Outing</span>
           </label>
@@ -53,7 +56,7 @@ const TransportTypeSelector = () => {
               onChange={() => handleCabTypeChange('teamLunch')} 
               className="radio-input" 
             />
-            <img src={checkIcon} alt="" className="radio-icon checked" />
+            <img src={selectedIcon} alt="" className="radio-icon checked" />
             <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
             <span className={`radio-text ${selectedCabType === 'teamLunch' ? 'checked' : ''}`}>Team Lunch</span>
           </label>

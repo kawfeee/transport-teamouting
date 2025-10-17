@@ -12,8 +12,10 @@ import uploadIcon from '../assets/upload.svg';
 import cancelIcon from '../assets/cancel.svg';
 import submitIcon from '../assets/submit.svg';
 import infoIcon from '../assets/info.svg';
+import CloseIcon from '../assets/close.svg';
 
 const BookingDetails = () => {
+  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [numberOfVehicles, setNumberOfVehicles] = useState('2');
   const [seatingCapacity, setSeatingCapacity] = useState('25');
   const [vehicleType, setVehicleType] = useState('AC');
@@ -175,7 +177,37 @@ const BookingDetails = () => {
 
         <div className="booking-right">
           <div className="quote-card">
-            <div className="quote-header">Quote Details <img src={infoIcon} alt="info" className="info-icon" /></div>
+            <div className="quote-header">
+              Quote Details 
+              <img 
+                src={infoIcon} 
+                alt="info" 
+                className="info-icon" 
+                onClick={() => setIsInfoPopupOpen(true)}
+              />
+              
+              {/* Info Popup */}
+              {isInfoPopupOpen && (
+                <>
+                  <div className="info-popup-overlay" onClick={() => setIsInfoPopupOpen(false)}></div>
+                  <div className="info-popup-container">
+                    <div className="info-popup-header">
+                      <h4 className="info-popup-title">Note:</h4>
+                      <button className="info-popup-close-btn" onClick={() => setIsInfoPopupOpen(false)}>
+                        <img src={CloseIcon} alt="close" width={20} height={20} />
+                      </button>
+                    </div>
+                    <div className="info-popup-content">
+                      <ul className="info-popup-list">
+                        <li>
+                          No show cost of 8/80 kms- as min billing will be applied, Toll, Parking and GST will be added based on the actual usage
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
             <table className="quote-table">
               <thead>
                 <tr>
