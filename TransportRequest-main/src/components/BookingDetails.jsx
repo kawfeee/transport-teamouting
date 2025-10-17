@@ -144,7 +144,7 @@ const BookingDetails = () => {
           <div className="approval-row">
             <label className="approval-label">
               <input type="checkbox" className="approval-checkbox" />
-              <span>I Confirm My Single Approval</span>
+              <span className="approval-text">I Confirm My Single Approval</span>
             </label>
           </div>
 

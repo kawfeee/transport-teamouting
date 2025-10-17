@@ -70,9 +70,10 @@ const TransportTypeSelector = ({ pageNumber = 1 }) => {
         <div className="field-dropdown-container">
           <button
             className="project-select"
-            onClick={() => setProjectDropdownOpen(!projectDropdownOpen)}
+            onClick={() => pageNumber === 1 && setProjectDropdownOpen(!projectDropdownOpen)}
             type="button"
             aria-label="Project select"
+            disabled={pageNumber !== 1}
           >
             {selectedProject}
             <img src={arrowDown} alt="arrow" className="dropdown-arrow" />
@@ -106,8 +107,9 @@ const TransportTypeSelector = ({ pageNumber = 1 }) => {
             <div className="field-dropdown-container">
               <button
                 className="field-dropdown-button"
-                onClick={() => setBuildingDropdownOpen(!buildingDropdownOpen)}
+                onClick={() => pageNumber === 1 && setBuildingDropdownOpen(!buildingDropdownOpen)}
                 type="button"
+                disabled={pageNumber !== 1}
               >
                 {reportingBuilding}
                 <img src={arrowDown} alt="arrow" className="dropdown-arrow" />
@@ -155,6 +157,7 @@ const TransportTypeSelector = ({ pageNumber = 1 }) => {
 
                 <div className="date-field-display" onClick={(ev) => {
                   // when user clicks the display or calendar icon, trigger the native date input click
+                  if (pageNumber !== 1) return;
                   const native = ev.currentTarget.parentNode.querySelector('.date-field-input-hidden');
                   if (native) native.showPicker ? native.showPicker() : native.click();
                 }}>
@@ -173,6 +176,7 @@ const TransportTypeSelector = ({ pageNumber = 1 }) => {
               onChange={(e) => setVenue(e.target.value)}
               placeholder="xxx-xxx-xxx-xxx-xx"
               className="venue-input"
+              readOnly={pageNumber !== 1}
             />
           </div>
         </div>

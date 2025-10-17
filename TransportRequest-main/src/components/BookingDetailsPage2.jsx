@@ -13,6 +13,7 @@ import submitIcon from '../assets/submit.svg';
 import infoIcon from '../assets/info.svg';
 import CloseIcon from '../assets/close.svg';
 import transferIcon from '../assets/transfer.svg';
+import checkIcon from '../assets/check.svg';
 import checkGrayIcon from '../assets/check-gray.svg';
 import uncheckIcon from '../assets/uncheck.svg';
 import downloadIcon from '../assets/download.svg';
@@ -46,7 +47,7 @@ const BookingDetailsPage2 = () => {
             <div className="field">
               <label>Number of Vehicle</label>
               <div className="select-wrap">
-                <select value={numberOfVehicles} onChange={e => setNumberOfVehicles(e.target.value)} className="custom-select">
+                <select value={numberOfVehicles} onChange={e => setNumberOfVehicles(e.target.value)} className="custom-select" disabled>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
@@ -58,7 +59,7 @@ const BookingDetailsPage2 = () => {
             <div className="field">
               <label>Seating Capacity</label>
               <div className="select-wrap">
-                <select value={seatingCapacity} onChange={e => setSeatingCapacity(e.target.value)} className="custom-select">
+                <select value={seatingCapacity} onChange={e => setSeatingCapacity(e.target.value)} className="custom-select" disabled>
                   <option>25</option>
                   <option>30</option>
                   <option>40</option>
@@ -70,7 +71,7 @@ const BookingDetailsPage2 = () => {
             <div className="field">
               <label>Vehicle Type</label>
               <div className="select-wrap">
-                <select value={vehicleType} onChange={e => setVehicleType(e.target.value)} className="custom-select">
+                <select value={vehicleType} onChange={e => setVehicleType(e.target.value)} className="custom-select" disabled>
                   <option>AC</option>
                   <option>Non-AC</option>
                 </select>
@@ -81,7 +82,7 @@ const BookingDetailsPage2 = () => {
             <div className="field">
               <label>One way Distance from Office to Venue</label>
               <div className="input-with-icon">
-                <input value={distance} onChange={e => setDistance(e.target.value)} />
+                <input value={distance} onChange={e => setDistance(e.target.value)} readOnly />
                 <button className="icon-btn">
                   <img src={speedIcon} alt="speed" className="distance-icon" />
                 </button>
@@ -93,7 +94,7 @@ const BookingDetailsPage2 = () => {
             <div className="field">
               <label>End Time at Office</label>
               <div className="input-with-icon">
-                <input value={endTime} onChange={e => setEndTime(e.target.value)} />
+                <input value={endTime} onChange={e => setEndTime(e.target.value)} readOnly />
                 <button className="icon-btn">
                   <img src={clockIcon} alt="clock" className="time-icon" />
                 </button>
@@ -103,7 +104,7 @@ const BookingDetailsPage2 = () => {
             <div className="field field-with-actions">
               <label>Start Time from Office</label>
               <div className="input-with-icon">
-                <input value={startTime} onChange={e => setStartTime(e.target.value)} />
+                <input value={startTime} onChange={e => setStartTime(e.target.value)} readOnly />
                 <button className="icon-btn">
                   <img src={clockIcon} alt="clock" className="time-icon" />
                 </button>
@@ -124,12 +125,12 @@ const BookingDetailsPage2 = () => {
             <div className="contact-row">
               <div className="contact-field">
                 <label>Extension No <span className="required">*</span></label>
-                <input value={extensionNo} onChange={e => setExtensionNo(e.target.value)} />
+                <input value={extensionNo} onChange={e => setExtensionNo(e.target.value)} readOnly />
               </div>
 
               <div className="contact-field">
                 <label>Mobile No <span className="required">*</span></label>
-                <input value={mobileNo} onChange={e => setMobileNo(e.target.value)} />
+                <input value={mobileNo} onChange={e => setMobileNo(e.target.value)} readOnly />
               </div>
             </div>
           </div>
@@ -194,7 +195,7 @@ const BookingDetailsPage2 = () => {
                   onChange={(e) => setRequestType(e.target.value)}
                   className="radio-input"
                 />
-                <img src={checkGrayIcon} alt="" className="radio-icon checked" />
+                <img src={checkIcon} alt="" className="radio-icon checked" />
                 <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
                 <span className="radio-text">Transfer Workflow</span>
               </label>
@@ -207,7 +208,7 @@ const BookingDetailsPage2 = () => {
                   onChange={(e) => setRequestType(e.target.value)}
                   className="radio-input"
                 />
-                <img src={checkGrayIcon} alt="" className="radio-icon checked" />
+                <img src={checkIcon} alt="" className="radio-icon checked" />
                 <img src={uncheckIcon} alt="" className="radio-icon unchecked" />
                 <span className="radio-text">Review and send back to Me (No Data Modification)</span>
               </label>
